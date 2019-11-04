@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:v2exflutter/layout/layout.dart';
-import 'package:v2exflutter/utils/http_request.dart';
+import 'package:v2exflutter/api/hot_topic.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,10 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // This widget is the root of your application.
   void getTest() async {
-    print('333');
-    String url = '/api/topics/hot.json';
-    String method = 'GET';
-    var response = await HttpRequest.httpRequest(url);
+    var response = await HotTopic.getHotTopic();
     print(response);
   }
 

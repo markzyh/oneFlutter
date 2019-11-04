@@ -1,1 +1,1 @@
-const String baseUrl = '//www.v2ex.com/';
+const String baseUrl = "https://www.v2ex.com";

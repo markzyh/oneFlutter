@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class LayOut extends StatelessWidget {
   final String _title;
   final bool _isCenter;
-  Widget child;
-  LayOut(this._isCenter, this._title, this.child);
+  Widget child, tabBar;
+  LayOut(this._isCenter, this._title, this.child, {this.tabBar});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class LayOut extends StatelessWidget {
           ),
         ),
         centerTitle: _isCenter,
+        bottom: tabBar,
       ),
       body: child,
     );

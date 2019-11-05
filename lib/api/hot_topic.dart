@@ -6,9 +6,8 @@ part 'hot_topic.g.dart';
 
 @JsonSerializable()
 class TopHot {
-  // String avatarUrl, userName, tag, title, url;
-  Map member;
-  Map<HotNode, dynamic> node;
+  HotMember member;
+  HotNode node;
   String title, url;
   @JsonKey(name: "last_reply_by")
   String lastReplyBy;
@@ -40,6 +39,7 @@ class HotList {
   }
 }
 
+@JsonSerializable()
 class HotNode {
   @JsonKey(name: "avatar_normal")
   String avatarNormal;
@@ -47,10 +47,19 @@ class HotNode {
 
   HotNode(this.title, this.avatarNormal);
 
-  factory HotNode.fromJson(Map<String, dynamic> parsedJson) {
-    return HotNode(
-        avatarNormal: parsedJson['avatar_normal'], title: parsedJson['title']);
-  }
+  factory HotNode.fromJson(Map<String, dynamic> json) =>
+      _$HotNodeFromJson(json);
+  Map<String, dynamic> toJson() => _$HotNodeToJson(this);
+}
+
+@JsonSerializable()
+class HotMember {
+  String username;
+  HotMember(this.username);
+
+  factory HotMember.fromJson(Map<String, dynamic> json) =>
+      _$HotMemberFromJson(json);
+  Map<String, dynamic> toJson() => _$HotMemberToJson(this);
 }
 
 class HotTopic {
@@ -59,7 +68,7 @@ class HotTopic {
         await HttpRequest.httpRequest('/api/topics/hot.json', method: 'GET');
     var jsonResponse = json.decode(response.toString()); //反序列化
     HotList hotList = HotList.fromJson(jsonResponse);
-    print(hotList.hotList[0].node);
+    // print(hotList.hotList[0].member.username);
     return hotList.hotList;
   }
 }

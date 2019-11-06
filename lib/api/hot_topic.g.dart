@@ -35,21 +35,21 @@ Map<String, dynamic> _$TopHotToJson(TopHot instance) => <String, dynamic>{
 HotNode _$HotNodeFromJson(Map<String, dynamic> json) {
   return HotNode(
     json['title'] as String,
-    json['avatar_normal'] as String,
   );
 }
 
 Map<String, dynamic> _$HotNodeToJson(HotNode instance) => <String, dynamic>{
-      'avatar_normal': instance.avatarNormal,
       'title': instance.title,
     };
 
 HotMember _$HotMemberFromJson(Map<String, dynamic> json) {
   return HotMember(
     json['username'] as String,
+    json['avatar_normal'] as String,
   );
 }
 
 Map<String, dynamic> _$HotMemberToJson(HotMember instance) => <String, dynamic>{
+      'avatar_normal': instance.avatarNormal,
       'username': instance.username,
     };

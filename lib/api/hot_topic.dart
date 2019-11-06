@@ -41,11 +41,8 @@ class HotList {
 
 @JsonSerializable()
 class HotNode {
-  @JsonKey(name: "avatar_normal")
-  String avatarNormal;
   String title;
-
-  HotNode(this.title, this.avatarNormal);
+  HotNode(this.title);
 
   factory HotNode.fromJson(Map<String, dynamic> json) =>
       _$HotNodeFromJson(json);
@@ -54,8 +51,10 @@ class HotNode {
 
 @JsonSerializable()
 class HotMember {
+  @JsonKey(name: "avatar_normal")
+  String avatarNormal;
   String username;
-  HotMember(this.username);
+  HotMember(this.username, this.avatarNormal);
 
   factory HotMember.fromJson(Map<String, dynamic> json) =>
       _$HotMemberFromJson(json);

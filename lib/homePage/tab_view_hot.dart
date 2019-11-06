@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v2exflutter/components/list_item.dart';
 
 class TabViewHot extends StatefulWidget {
   final List hotList;
@@ -13,7 +14,6 @@ class _TabViewHotState extends State<TabViewHot>
   final ScrollController _scrollController = ScrollController();
   List hotList;
   _TabViewHotState(this.hotList);
-  String text = 'TabViewOne';
 
   //下拉刷新
   @protected
@@ -24,14 +24,8 @@ class _TabViewHotState extends State<TabViewHot>
   @override
   void initState() {
     super.initState();
-    print('TabViewOne init');
-    print(hotList);
-    Future.delayed(const Duration(seconds: 5), () {
-      setState(() {
-        // text = '我已经改变了';
-      });
-      // print(hotList);
-    });
+    // print('TabViewOne init');
+    // print(hotList);
   }
 
   @override
@@ -42,7 +36,7 @@ class _TabViewHotState extends State<TabViewHot>
       physics: AlwaysScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         if (index == _itemCount) print('到底了');
-        return Text(hotList[index].title);
+        return ListItem(hotList[index]);
       },
       itemCount: _itemCount,
       controller: _scrollController,
@@ -55,14 +49,4 @@ class _TabViewHotState extends State<TabViewHot>
 
   @override
   bool get wantKeepAlive => true;
-}
-
-class ListItem extends StatelessWidget {
-  final String text;
-  ListItem(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('$text');
-  }
 }

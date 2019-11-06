@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage>
     setState(() {
       hotList = response;
     });
-    print(hotList[0].title);
+    print(hotList[0].member.avatarNormal);
     print('hotList22222222222222');
   }
 

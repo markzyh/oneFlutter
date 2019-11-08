@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     // _scrollViewController = ScrollController();
-    _tabController = TabController(vsync: this, length: 3);
+    _tabController = TabController(vsync: this, length: 6);
     // getHotList();
   }
 
@@ -46,7 +46,10 @@ class _HomePageState extends State<HomePage>
           controller: _tabController,
           tabs: <Widget>[
             Text('最热'),
-            Text('111'),
+            Text('最新'),
+            Text('最新'),
+            Text('最新'),
+            Text('最新'),
             Text('111'),
           ],
         ),
@@ -56,6 +59,9 @@ class _HomePageState extends State<HomePage>
         children: <Widget>[
           TabViewHot(hotList),
           TabViewLastest(),
+          TabViewAll(),
+          TabViewAll(),
+          TabViewAll(),
           TabViewAll(),
         ],
       ),

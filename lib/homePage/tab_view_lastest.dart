@@ -9,7 +9,7 @@ class _TabViewLastestState extends State<TabViewLastest> {
   @override
   void initState() {
     super.initState();
-    print('TabViewTwo init');
+    // print('TabViewTwo init');
   }
 
   @override

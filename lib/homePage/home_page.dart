@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:v2exflutter/layout/layout.dart';
 import 'package:v2exflutter/homePage/tab_view_hot.dart';
-import 'package:v2exflutter/homePage/tab_view_lastest.dart';
+import 'package:v2exflutter/homePage/tab_view_latest.dart';
 import 'package:v2exflutter/homePage/tab_view_all.dart';
 
 class HomePage extends StatefulWidget {
@@ -57,8 +57,8 @@ class _HomePageState extends State<HomePage>
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          TabViewHot(hotList),
-          TabViewLastest(),
+          TabViewHot(),
+          TabViewLatest(),
           TabViewAll(),
           TabViewAll(),
           TabViewAll(),

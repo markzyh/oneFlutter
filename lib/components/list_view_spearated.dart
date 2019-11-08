@@ -10,7 +10,8 @@ class ListViewData extends StatefulWidget {
   _ListViewDataState createState() => _ListViewDataState(dataList, getList);
 }
 
-class _ListViewDataState extends State<ListViewData> {
+class _ListViewDataState extends State<ListViewData>
+    with AutomaticKeepAliveClientMixin {
   final refreshKey = GlobalKey<RefreshIndicatorState>();
   final ScrollController _scrollController = ScrollController();
   List dataList;
@@ -34,6 +35,7 @@ class _ListViewDataState extends State<ListViewData> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     num _itemCount = dataList.length;
     return RefreshIndicator(
       key: refreshKey,
@@ -54,6 +56,7 @@ class _ListViewDataState extends State<ListViewData> {
     );
   }
 
+  @override
   bool get wantKeepAlive => true;
 }
 
@@ -63,7 +66,8 @@ class ListViewSpearated extends StatelessWidget {
   ListViewSpearated(this.dataList, this.getList);
   @override
   Widget build(BuildContext context) {
-    if (dataList.length == 0) return SpinKitCircle(color: Colors.blue);
+    if (dataList == null || dataList.length == 0)
+      return SpinKitCircle(color: Colors.blue);
     return ListViewData(dataList, getList);
   }
 }

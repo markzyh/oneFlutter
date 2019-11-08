@@ -62,12 +62,10 @@ class HotMember {
 }
 
 class HotTopic {
-  static getHotTopic() async {
-    var response =
-        await HttpRequest.httpRequest('/api/topics/hot.json', method: 'GET');
+  static getHotTopic(url, method) async {
+    var response = await HttpRequest.httpRequest(url, method: method);
     var jsonResponse = json.decode(response.toString()); //反序列化
     HotList hotList = HotList.fromJson(jsonResponse);
-    // print(hotList.hotList[0].member.username);
     return hotList.hotList;
   }
 }

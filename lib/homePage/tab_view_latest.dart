@@ -2,34 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:v2exflutter/components/list_view_spearated.dart';
 import 'package:v2exflutter/api/hot/hot_topic.dart';
 
-class TabViewHot extends StatefulWidget {
+class TabViewLatest extends StatefulWidget {
   @override
-  _TabViewHotState createState() => _TabViewHotState();
+  _TabViewLatestState createState() => _TabViewLatestState();
 }
 
-class _TabViewHotState extends State<TabViewHot>
+class _TabViewLatestState extends State<TabViewLatest>
     with AutomaticKeepAliveClientMixin {
-  List hotList;
-
+  List latestList;
   @override
   void initState() {
     super.initState();
-    getHotList();
+    getLatestList();
   }
 
-  void getHotList() async {
+  void getLatestList() async {
     var response =
-        await HotTopic.getHotTopic('/api/topics/hot.json', 'GET'); //list
+        await HotTopic.getHotTopic('/api/topics/latest.json', 'GET'); //list
     print('重新请求');
     setState(() {
-      hotList = response;
+      latestList = response;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return ListViewSpearated(hotList, getHotList);
+    return ListViewSpearated(latestList, getLatestList);
   }
 
   @override

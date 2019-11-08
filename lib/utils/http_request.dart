@@ -15,7 +15,7 @@ class HttpRequest {
     Response response;
     try {
       response = await dio.request(
-        "/api/topics/hot.json",
+        url,
         options: Options(method: method, responseType: ResponseType.plain),
       );
     } catch (e) {

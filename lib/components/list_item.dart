@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:common_utils/common_utils.dart';
 
 class ListItem extends StatelessWidget {
   final item;
@@ -9,8 +10,20 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(item.node.avatarNormal);
-    // return Text('111');
+    // TimerUtil _timerUtil;
+    var dateString = (item.lastTouched * 1000);
+    var now = DateTime.now().millisecondsSinceEpoch;
+    // var now1 = DateTime.now();
+    // var time = DateTime.fromMillisecondsSinceEpoch(dateString);
+    // var diff = DateTime.fromMillisecondsSinceEpoch(dateString).difference(now1);
+    // print(now - dateString);
+    // print(now);
+    // print(dateString);
+    // print('--------------------------------------------------------');
+    // var val = diff.toString().substring(1, 5);
+    // var time = diff;
+    String timeline = TimelineUtil.format(dateString, locTimeMillis: now);
+    var time = timeline;
     return Flex(
       direction: Axis.horizontal,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -40,23 +53,23 @@ class ListItem extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(2),
                       child: Container(
-                        height: 24,
+                        height: 18,
                         child: GestureDetector(
                           onTap: testTap,
                           child: Text(
                             item.node.title,
-                            style: TextStyle(color: Colors.white, fontSize: 12),
+                            style: TextStyle(color: Colors.white, fontSize: 10),
                           ),
                         ),
                         color: Colors.grey,
                         alignment: Alignment.center,
-                        padding: EdgeInsets.only(left: 8, right: 8),
+                        padding: EdgeInsets.only(left: 2, right: 2),
                       ),
                     ),
                     Container(
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(left: 4),
-                      height: 24,
+                      height: 18,
                       child: Row(
                         children: <Widget>[
                           // Icon(
@@ -74,8 +87,9 @@ class ListItem extends StatelessWidget {
                             color: Colors.grey,
                           ),
                           Text(
-                            item.lastTouched.toString(),
-                            style: TextStyle(fontSize: 12),
+                            time.toString(),
+                            // item.lastTouched.toString(),
+                            style: TextStyle(fontSize: 10),
                           ),
                           Icon(
                             IconData(0xe63f, fontFamily: 'iconfont'),
@@ -83,8 +97,8 @@ class ListItem extends StatelessWidget {
                             color: Colors.grey,
                           ),
                           Text(
-                            '最后回复来自',
-                            style: TextStyle(fontSize: 12),
+                            '最后来自',
+                            style: TextStyle(fontSize: 10),
                           ),
                           Text(
                             item.lastReplyBy,
@@ -98,6 +112,23 @@ class ListItem extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ),
+        // Text('data'),
+        // Container(
+        //   // margin: EdgeInsets.only(right: 1),
+        //   child: Text(item.replies.toString()),
+        // )
+        ClipRRect(
+          borderRadius: BorderRadius.circular(2),
+          child: Container(
+            child: Text(
+              item.replies.toString(),
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            ),
+            color: Colors.grey,
+            alignment: Alignment.center,
+            padding: EdgeInsets.only(left: 8, right: 8),
           ),
         ),
       ],

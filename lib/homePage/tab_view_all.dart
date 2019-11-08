@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TabViewThree extends StatefulWidget {
+class TabViewAll extends StatefulWidget {
   @override
-  _TabViewThree createState() => _TabViewThree();
+  _TabViewAllState createState() => _TabViewAllState();
 }
 
-class _TabViewThree extends State<TabViewThree> {
+class _TabViewAllState extends State<TabViewAll> {
   @override
   void initState() {
     super.initState();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:v2exflutter/homePage/home_page.dart';
+// import 'package:v2exflutter/homePage/home_page.dart';
+import 'package:v2exflutter/layout/layout.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => LayOut(),
       },
     );
   }

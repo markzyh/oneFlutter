@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:v2exflutter/layout/layout.dart';
 import 'package:v2exflutter/homePage/tab_view_hot.dart';
 import 'package:v2exflutter/homePage/tab_view_latest.dart';
-import 'package:v2exflutter/homePage/tab_view_all.dart';
+// import 'package:v2exflutter/homePage/tab_view_all.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,14 +12,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   // ScrollController _scrollViewController;
-  TabController _tabController;
+  TabController _topTabController;
+  // TabController _tabController;
   List hotList = [];
 
   @override
   void initState() {
     super.initState();
     // _scrollViewController = ScrollController();
-    _tabController = TabController(vsync: this, length: 6);
+    _topTabController = TabController(vsync: this, length: 2);
+    // _bottomTabController = TabController(vsync: this, length: 2);
     // getHotList();
   }
 
@@ -27,7 +29,8 @@ class _HomePageState extends State<HomePage>
   void dispose() {
     super.dispose();
     // _scrollViewController.dispose();
-    _tabController.dispose();
+    _topTabController.dispose();
+    // _bottomTabController.dispose();
   }
 
   @override
@@ -43,28 +46,30 @@ class _HomePageState extends State<HomePage>
         ),
         centerTitle: true,
         bottom: TabBar(
-          controller: _tabController,
+          controller: _topTabController,
           tabs: <Widget>[
             Text('最热'),
             Text('最新'),
-            Text('最新'),
-            Text('最新'),
-            Text('最新'),
-            Text('111'),
           ],
         ),
       ),
       body: TabBarView(
-        controller: _tabController,
+        controller: _topTabController,
         children: <Widget>[
           TabViewHot(),
           TabViewLatest(),
-          TabViewAll(),
-          TabViewAll(),
-          TabViewAll(),
-          TabViewAll(),
         ],
       ),
+      // bottomNavigationBar: Material(
+      //   child: TabBar(
+      //     controller: _bottomTabController,
+      //     tabs: <Widget>[
+      //       Text('button1'),
+      //       Text('button2'),
+      //       Text('button3'),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

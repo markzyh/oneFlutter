@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:v2exflutter/homePage/home_page.dart';
+import 'package:v2exflutter/personalCenter/personal_center.dart';
 
 class LayOut extends StatefulWidget {
   @override
@@ -24,14 +25,17 @@ class _LayOutState extends State<LayOut> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomePage(),
+      // body: HomePage(),
+      body: TabBarView(
+        children: <Widget>[HomePage(), PersonalCenter()],
+        controller: _tabController,
+      ),
       bottomNavigationBar: Material(
         child: TabBar(
           controller: _tabController,
           tabs: <Widget>[
-            Text('button1'),
-            Text('button2'),
-            Text('button3'),
+            FlatButton(child: Text('列表')),
+            FlatButton(child: Text('我的')),
           ],
         ),
       ),
